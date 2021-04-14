@@ -28,7 +28,7 @@ function MoviePage() {
         `https://api.themoviedb.org/3/movie/${id}/credits?api_key=ccc9a4bc732f366b3a0a8622dd0ecc77&language=uk`
       )
       .then(({ data }) => setActors(data.cast));
-  }, []);
+  }, [id]);
   return (
     <div className="movie_wrapper">
       <div className="movie_header">

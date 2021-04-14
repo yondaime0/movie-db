@@ -22,28 +22,34 @@ function HomePage() {
   const dispatch = useDispatch();
   const movies = useSelector(({ items }) => items.movies);
   const tv = useSelector(({ items }) => items.tv);
-  const isLoaded = useSelector(({ items }) => items.isLoaded);
+
   const { category, sort, page } = useSelector(({ filters }) => filters);
 
   React.useEffect(() => {
     dispatch(fetchItems(category, sort, page));
-  }, [category, sort, page]);
+  }, [category, sort, page, dispatch]);
 
-  const onSelectCategory = React.useCallback((index) => {
-    dispatch(setCategory(index));
-  }, []);
+  const onSelectCategory = React.useCallback(
+    (index) => {
+      dispatch(setCategory(index));
+    },
+    [dispatch]
+  );
 
-  const onSelectSortType = React.useCallback((type) => {
-    dispatch(setSort(type));
-  });
+  const onSelectSortType = React.useCallback(
+    (type) => {
+      dispatch(setSort(type));
+    },
+    [dispatch]
+  );
 
   const onSelectPageIncrement = React.useCallback(() => {
     dispatch(setPageIncrement());
-  });
+  }, [dispatch]);
 
   const onSelectPageDecrement = React.useCallback(() => {
     dispatch(setPageDecrement());
-  });
+  }, [dispatch]);
 
   return (
     <div className="content">
