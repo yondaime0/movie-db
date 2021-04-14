@@ -71,32 +71,30 @@ function MoviePage() {
 
       {video.results &&
         video.results.map((data, index) => {
-          if (data.type === 'Trailer') {
-            return (
-              <div className="trailer">
-                <div className="trailer-name">{data.name}</div>
-                <iframe
-                  className="trailer-video"
-                  width="680"
-                  height="450"
-                  src={`https://www.youtube.com/embed/${data.key}`}
-                  title="YouTube video player"
-                  frameborder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowfullscreen="true"
-                ></iframe>
-              </div>
-            );
-          }
+          return data.type === 'Trailer' ? (
+            <div className="trailer">
+              <div className="trailer-name">{data.name}</div>
+              <iframe
+                className="trailer-video"
+                width="680"
+                height="450"
+                src={`https://www.youtube.com/embed/${data.key}`}
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen="true"
+              ></iframe>
+            </div>
+          ) : (
+            ''
+          );
         })}
 
       <div className="movie_actors-title">Список акторів:</div>
       <div className="movie_actors">
         {actors &&
           actors.map((data, index) => {
-            if (index <= 7) {
-              return <Actors key={data.id} data={data} />;
-            }
+            return index <= 7 ? <Actors key={data.id} data={data} /> : '';
           })}
       </div>
     </div>
