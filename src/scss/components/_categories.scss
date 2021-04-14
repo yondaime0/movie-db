@@ -1,0 +1,52 @@
+@import '../variables';
+
+.category {
+  margin-left: 0;
+  margin-right: 50px;
+
+  &-list {
+    list-style: none;
+    padding: 0;
+
+    &__item {
+      display: flex;
+      justify-content: center;
+
+      padding: 5px 15px;
+      align-items: center;
+      font-size: 22px;
+      height: 70px;
+      @media (min-width: 980px) {
+        justify-content: space-between;
+        font-size: 16px;
+        height: 45px;
+        width: 210px;
+      }
+
+      & svg {
+        display: none;
+        margin-left: 10px;
+      }
+
+      &:not(:last-child) {
+        margin-bottom: 10px;
+      }
+
+      border-radius: 8px;
+      transition: all linear 0.2s;
+
+      &:hover {
+        background: black;
+        cursor: pointer;
+      }
+
+      &.active {
+        background: black;
+
+        & svg {
+          display: block;
+        }
+      }
+    }
+  }
+}

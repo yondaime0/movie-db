@@ -1,0 +1,135 @@
+@import 'fonts';
+@import 'variables';
+@import 'libs/normalize';
+
+@import 'components/all';
+
+body {
+  background-color: $background;
+  color: white;
+}
+
+h2 {
+  font-weight: 500;
+  color: white;
+}
+
+.wrapper {
+  margin: 0 auto;
+  padding: 10px;
+  max-width: 1400px;
+}
+
+.content {
+  margin-top: 30px;
+  // display: flex;
+  padding: 20px;
+
+  @media (min-width: 980px) {
+    display: flex;
+  }
+}
+
+.movie_wrapper {
+  margin: 0 auto;
+  padding: 10px;
+}
+
+.movie_header {
+  display: flex;
+  padding: 30px;
+
+  &__poster {
+    &-img {
+      max-width: 260px;
+      border-radius: 10px;
+    }
+  }
+
+  &__info {
+    margin-left: 50px;
+
+    &-subtitle {
+      color: rgb(211, 210, 210);
+    }
+
+    &-title {
+      font-size: 30px;
+      font-weight: 500;
+      margin-bottom: 20px;
+    }
+
+    &-categories {
+      margin-bottom: 5px;
+      &-type {
+        color: white;
+      }
+    }
+
+    &-date {
+      margin-bottom: 5px;
+    }
+
+    &-budget {
+      margin-bottom: 5px;
+    }
+
+    &-revenue {
+      margin-bottom: 5px;
+    }
+
+    &-vote {
+      margin-bottom: 5px;
+    }
+
+    &-runtime {
+      margin-bottom: 5px;
+    }
+
+    &-overview {
+      margin-top: 40px;
+      font-size: 18px;
+    }
+    &-seasons {
+      margin-bottom: 5px;
+    }
+    &-episodes {
+      margin-bottom: 5px;
+    }
+  }
+}
+
+.btn-page {
+  display: flex;
+  justify-content: center;
+  & span {
+    color: white;
+    align-self: center;
+    font-size: 24px;
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+  & .next-page-btn,
+  .previous-page-btn {
+    background: black;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 18px;
+    padding: 10px;
+
+    &:hover {
+      cursor: pointer;
+      background: rgb(16, 16, 16);
+    }
+  }
+}
+
+.trailer {
+  padding: 30px;
+  &-name {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+}

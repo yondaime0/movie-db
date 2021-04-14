@@ -1,0 +1,17 @@
+@import '../variables';
+
+.item-block {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-top: 30px;
+
+  &-link {
+    text-decoration: none;
+    margin-bottom: 50px;
+
+    &:not(:last-child) {
+      margin-right: 20px;
+    }
+  }
+}

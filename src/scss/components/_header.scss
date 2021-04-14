@@ -1,0 +1,26 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+
+  &__logo {
+    font-size: 20px;
+    font-weight: 600;
+    margin-left: 40px;
+
+    &-link {
+      text-decoration: none;
+      color: #fff;
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &__search {
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
