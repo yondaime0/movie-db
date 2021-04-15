@@ -76,8 +76,6 @@ function MoviePage() {
               <div className="trailer-name">{data.name}</div>
               <iframe
                 className="trailer-video"
-                width="680"
-                height="450"
                 src={`https://www.youtube.com/embed/${data.key}`}
                 title="YouTube video player"
                 frameborder="0"

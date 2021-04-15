@@ -12,6 +12,12 @@ body {
 h2 {
   font-weight: 500;
   color: white;
+  padding-top: 40px;
+  text-align: center;
+  @media (min-width: 768px) {
+    padding-top: 0;
+    text-align: left;
+  }
 }
 
 .wrapper {
@@ -25,7 +31,7 @@ h2 {
   // display: flex;
   padding: 20px;
 
-  @media (min-width: 980px) {
+  @media (min-width: 768px) {
     display: flex;
   }
 }
@@ -36,18 +42,28 @@ h2 {
 }
 
 .movie_header {
-  display: flex;
-  padding: 30px;
+  display: block;
+  padding: 20px;
+  @media (min-width: 768px) {
+    display: flex;
+    padding: 30px;
+  }
 
   &__poster {
     &-img {
       max-width: 260px;
       border-radius: 10px;
+      margin-bottom: 30px;
+      @media (min-width: 768px) {
+        margin-bottom: 0px;
+      }
     }
   }
 
   &__info {
-    margin-left: 50px;
+    @media (min-width: 768px) {
+      margin-left: 50px;
+    }
 
     &-subtitle {
       color: rgb(211, 210, 210);
@@ -116,8 +132,11 @@ h2 {
     color: white;
     border: none;
     border-radius: 10px;
-    font-size: 18px;
+    font-size: 14px;
     padding: 10px;
+    @media (min-width: 768px) {
+      font-size: 16px;
+    }
 
     &:hover {
       cursor: pointer;
@@ -127,7 +146,18 @@ h2 {
 }
 
 .trailer {
-  padding: 30px;
+  padding: 20px;
+  @media (min-width: 768px) {
+    padding: 30px;
+  }
+  &-video {
+    width: 300px;
+    height: 200px;
+    @media (min-width: 768px) {
+      width: 680px;
+      height: 440px;
+    }
+  }
   &-name {
     font-size: 20px;
     margin-bottom: 20px;

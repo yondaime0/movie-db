@@ -1,14 +1,23 @@
 @import '../variables';
 
 .item {
-  width: 200px;
+  width: 310px;
   box-shadow: 0 7px 14px rgba(0, 0, 0, 0.25), 0 5px 5px rgba(0, 0, 0, 0.22);
   border-radius: 10px;
   overflow: hidden;
+  display: flex;
+  @media (min-width: 768px) {
+    width: 200px;
+    display: block;
+  }
 
   & .poster-img {
-    width: 200px;
-    height: 270px;
+    width: 120px;
+    height: 170px;
+    @media (min-width: 768px) {
+      width: 200px;
+      height: 270px;
+    }
   }
 
   &:hover {
@@ -22,15 +31,29 @@
 
     &-title {
       margin-right: 5px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 147px;
+      @media (min-width: 768px) {
+        display: block;
+        width: auto;
+      }
       & .title {
         color: #fffe;
         margin-bottom: 10px;
-        font-size: 16px;
+        font-size: 20px;
+        @media (min-width: 768px) {
+          font-size: 16px;
+        }
       }
 
       & .date {
-        font-size: 14px;
+        font-size: 16px;
         color: #858585;
+        @media (min-width: 768px) {
+          font-size: 14px;
+        }
       }
     }
     &-vote {

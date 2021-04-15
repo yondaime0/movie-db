@@ -3,6 +3,7 @@ const initialState = {
   tv: [],
   isLoaded: false,
 };
+
 const items = (state = initialState, action) => {
   switch (action.type) {
     case 'SET_MOVIES':
