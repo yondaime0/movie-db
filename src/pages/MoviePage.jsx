@@ -64,7 +64,9 @@ function MoviePage() {
           <div className="movie_header__info-vote">
             Рейтинг: {data.vote_average}/10
           </div>
-          <div className="movie_header__info-runtime">Час: {data.runtime}m</div>
+          <div className="movie_header__info-runtime">
+            Час: {data.runtime}хв.
+          </div>
           <div className="movie_header__info-overview">{data.overview}</div>
         </div>
       </div>
