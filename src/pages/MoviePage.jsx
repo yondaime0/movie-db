@@ -40,7 +40,10 @@ function MoviePage() {
           />
         </div>
         <div className="movie_header__info">
-          <div className="movie_header__info-title">{data.title}</div>
+          <div className="movie_header__info-title-block">
+            <h1 className="movie_header__info-title">{data.title}</h1>
+          </div>
+          <div className="movie_header__info-tagline">{data.tagline}</div>
           <div className="movie_header__info-categories">
             Категорія:{' '}
             {data.genres &&
@@ -79,6 +82,15 @@ function MoviePage() {
               <iframe
                 className="trailer-video"
                 src={`https://www.youtube.com/embed/${data.key}`}
+                srcdoc={`<style>*{padding:0;margin:0;overflow:hidden}
+    html,body{height:100%}
+    img,span{position:absolute;width:100%;top:0;bottom:0;margin:auto}
+    span{height:1.5em;text-align:center;font:48px/1.5 sans-serif;color:white;text-shadow:0 0 0.5em black}
+    </style>
+    <a href=https://www.youtube.com/embed/${data.key}?autoplay=1>
+    <img src=https://img.youtube.com/vi/${data.key}/hqdefault.jpg alt='Demo video'>
+    <span>▶</span>
+    </a>`}
                 title="YouTube video player"
                 frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
