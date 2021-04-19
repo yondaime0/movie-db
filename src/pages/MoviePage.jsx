@@ -6,6 +6,7 @@ import Actors from '../components/Actors';
 
 function MoviePage() {
   const [data, setData] = React.useState([]);
+
   const [actors, setActors] = React.useState([]);
   const [video, setVideo] = React.useState([]);
   const { id } = useParams();
@@ -15,7 +16,9 @@ function MoviePage() {
       .get(
         `https://api.themoviedb.org/3/movie/${id}?api_key=ccc9a4bc732f366b3a0a8622dd0ecc77&language=uk`
       )
-      .then(({ data }) => setData(data));
+      .then(({ data }) => {
+        setData(data);
+      });
 
     axios
       .get(
