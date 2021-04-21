@@ -1,16 +1,6 @@
 import axios from 'axios';
 
-export const setLoaded = (payload) => ({
-  type: 'SET_LOADED',
-  payload,
-});
-
 export const fetchItems = (category, sort, page) => (dispatch) => {
-  dispatch({
-    type: 'SET_LOADED',
-    payload: false,
-  });
-
   axios
     .get(
       `https://api.themoviedb.org/3/${
