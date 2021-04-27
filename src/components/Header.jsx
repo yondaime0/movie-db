@@ -24,7 +24,7 @@ function Header() {
       <div className="header__search">
         <form onSubmit={handleSubmit}>
           <input
-            type="text"
+            type="search"
             name="search"
             value={inputValue}
             onChange={handleChange}
