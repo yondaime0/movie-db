@@ -29,6 +29,7 @@ function Header() {
             value={inputValue}
             onChange={handleChange}
             placeholder="Шукати тут..."
+            autocomplete="off"
           />
         </form>
       </div>
