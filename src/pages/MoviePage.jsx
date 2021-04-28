@@ -62,10 +62,10 @@ function MoviePage() {
             Дата виходу: {data.release_date}
           </div>
           <div className="movie_header__info-budget">
-            Бюджет: {data.budget}$
+            Бюджет: {data.budget === 0 ? 'невідомо' : data.budget + '$'}
           </div>
           <div className="movie_header__info-revenue">
-            Зібрав: {data.revenue}$
+            Зібрав: {data.revenue === 0 ? 'невідомо' : data.revenue + '$'}
           </div>
           <div className="movie_header__info-vote">
             Рейтинг: {data.vote_average}/10
