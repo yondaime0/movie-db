@@ -4,7 +4,7 @@ import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import Actors from '../components/Actors';
 
-function MoviePage() {
+const MoviePage = () => {
   const [data, setData] = React.useState([]);
 
   const [actors, setActors] = React.useState([]);
@@ -114,6 +114,6 @@ function MoviePage() {
       </div>
     </div>
   );
-}
+};
 
 export default MoviePage;

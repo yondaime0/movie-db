@@ -1,7 +1,7 @@
 import Item from './Item';
 import { Link } from 'react-router-dom';
 
-function ItemBlock({ category, itemsMovies, itemsTv }) {
+const ItemBlock = ({ category, itemsMovies, itemsTv }) => {
   return (
     <div className="item-block">
       {category === 0 ? (
@@ -39,6 +39,6 @@ function ItemBlock({ category, itemsMovies, itemsTv }) {
       )}
     </div>
   );
-}
+};
 
 export default ItemBlock;

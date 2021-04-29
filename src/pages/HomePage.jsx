@@ -18,7 +18,7 @@ const sortItems = [
   { name: 'рейтингу', type: 'top_rated' },
 ];
 
-function HomePage() {
+const HomePage = () => {
   const dispatch = useDispatch();
   const movies = useSelector(({ items }) => items.movies);
   const tv = useSelector(({ items }) => items.tv);
@@ -93,6 +93,6 @@ function HomePage() {
       </div>
     </div>
   );
-}
+};
 
 export default HomePage;

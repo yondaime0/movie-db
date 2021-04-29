@@ -6,8 +6,7 @@ import MoviePage from './pages/MoviePage';
 import TvPage from './pages/TvPage';
 import SearchPage from './pages/SearchPage';
 
-
-function App() {
+const App = () => {
   return (
     <div className="wrapper">
       <Header />
@@ -19,6 +18,6 @@ function App() {
       </Switch>
     </div>
   );
-}
+};
 
 export default App;

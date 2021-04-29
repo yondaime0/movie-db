@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
 
-function Header() {
+const Header = () => {
   const [inputValue, setInputValue] = React.useState('');
   const history = useHistory();
 
@@ -35,6 +35,6 @@ function Header() {
       </div>
     </div>
   );
-}
+};
 
 export default Header;
