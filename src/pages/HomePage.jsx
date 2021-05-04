@@ -22,7 +22,6 @@ const HomePage = () => {
   const dispatch = useDispatch();
   const movies = useSelector(({ items }) => items.movies);
   const tv = useSelector(({ items }) => items.tv);
-
   const { category, sort, page } = useSelector(({ filters }) => filters);
 
   React.useEffect(() => {

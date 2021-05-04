@@ -7,11 +7,22 @@
   &__logo {
     font-size: 20px;
     font-weight: 600;
+    @media (prefers-color-scheme: dark) {
+      color: white;
+    }
+    @media (prefers-color-scheme: light) {
+      color: black;
+    }
     margin-left: 40px;
 
     &-link {
       text-decoration: none;
-      color: #fff;
+      @media (prefers-color-scheme: dark) {
+        color: white;
+      }
+      @media (prefers-color-scheme: light) {
+        color: black;
+      }
     }
 
     &:hover {

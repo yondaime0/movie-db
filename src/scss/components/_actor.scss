@@ -38,7 +38,13 @@
   &-character {
     margin-left: 5px;
     font-size: 14px;
-    color: #bfbdbd;
+
+    @media (prefers-color-scheme: dark) {
+      color: #bfbdbd;
+    }
+    @media (prefers-color-scheme: light) {
+      color: rgb(70, 70, 70);
+    }
     padding-bottom: 5px;
   }
 }

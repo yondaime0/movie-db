@@ -13,7 +13,13 @@
   }
 
   & span {
-    color: white;
+    @media (prefers-color-scheme: dark) {
+      color: white;
+    }
+    @media (prefers-color-scheme: light) {
+      color: black;
+    }
+
     font-size: 24px;
     margin-left: 15px;
     @media (min-width: 768px) {
@@ -55,10 +61,12 @@
       &:hover {
         background: black;
         cursor: pointer;
+        color: white;
       }
 
       &.active {
         background: black;
+        color: white;
 
         & svg {
           display: block;

@@ -6,7 +6,6 @@ import Actors from '../components/Actors';
 
 const MoviePage = () => {
   const [data, setData] = React.useState([]);
-
   const [actors, setActors] = React.useState([]);
   const [video, setVideo] = React.useState([]);
   const { id } = useParams();

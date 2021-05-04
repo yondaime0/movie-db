@@ -39,11 +39,13 @@
 
       &:hover {
         background: black;
+        color: white;
         cursor: pointer;
       }
 
       &.active {
         background: black;
+        color: white;
 
         & svg {
           display: block;
