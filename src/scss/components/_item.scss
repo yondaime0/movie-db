@@ -4,6 +4,7 @@
   box-shadow: 0 7px 14px rgba(0, 0, 0, 0.25), 0 5px 5px rgba(0, 0, 0, 0.22);
   border-radius: 14px;
   overflow: hidden;
+  transition: all linear 0.1s;
 
   @media (min-width: 300px) {
     display: flex;
@@ -35,6 +36,7 @@
 
   &:hover {
     cursor: pointer;
+    box-shadow: 0 10px 17px rgba(0, 0, 0, 0.25), 0 8px 8px rgba(0, 0, 0, 0.22);
   }
 
   &-text {
