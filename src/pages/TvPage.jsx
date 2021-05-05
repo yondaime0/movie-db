@@ -35,7 +35,11 @@ const TvPage = () => {
         <div className="movie_header__poster">
           <img
             className="movie_header__poster-img"
-            src={'https://image.tmdb.org/t/p/w500' + data.poster_path}
+            src={
+              data.poster_path
+                ? `https://image.tmdb.org/t/p/w500/${data.poster_path}`
+                : ''
+            }
             alt="poster_img"
           />
         </div>
