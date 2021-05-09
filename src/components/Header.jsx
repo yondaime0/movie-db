@@ -1,19 +1,7 @@
-import React from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import SearchInput from './SearchInput';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
-  const [inputValue, setInputValue] = React.useState('');
-  const history = useHistory();
-
-  const handleChange = (event) => {
-    setInputValue(event.target.value);
-  };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    history.push(`/search/${inputValue}`);
-  };
-
   return (
     <div className="header">
       <div className="header__logo">
@@ -22,16 +10,7 @@ const Header = () => {
         </Link>
       </div>
       <div className="header__search">
-        <form onSubmit={handleSubmit}>
-          <input
-            type="search"
-            name="search"
-            value={inputValue}
-            onChange={handleChange}
-            placeholder="Шукати тут..."
-            autocomplete="off"
-          />
-        </form>
+        <SearchInput />
       </div>
     </div>
   );

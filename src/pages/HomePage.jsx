@@ -8,7 +8,6 @@ import {
   setPageDecrement,
 } from '../redux/actions/filters';
 import { fetchItems } from '../redux/actions/items';
-
 import React from 'react';
 import Sort from '../components/Sort';
 
@@ -21,7 +20,6 @@ const sortItems = [
 const HomePage = () => {
   const dispatch = useDispatch();
   const movies = useSelector(({ items }) => items.movies);
-
   const tv = useSelector(({ items }) => items.tv);
   const { category, sort, page } = useSelector(({ filters }) => filters);
 

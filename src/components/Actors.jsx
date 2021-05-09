@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 const Actors = ({ data }) => {
   return (
@@ -27,5 +27,4 @@ const Actors = ({ data }) => {
     </div>
   );
 };
-
 export default Actors;

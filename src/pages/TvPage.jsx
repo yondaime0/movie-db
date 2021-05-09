@@ -1,7 +1,7 @@
-import React from 'react';
-import axios from 'axios';
-import Actors from '../components/Actors';
-import { useParams } from 'react-router-dom';
+import React from "react";
+import axios from "axios";
+import Actors from "../components/Actors";
+import { useParams } from "react-router-dom";
 
 const TvPage = () => {
   const [data, setData] = React.useState([]);
@@ -38,7 +38,7 @@ const TvPage = () => {
             src={
               data.poster_path
                 ? `https://image.tmdb.org/t/p/w500/${data.poster_path}`
-                : ''
+                : ""
             }
             alt="poster_img"
           />
@@ -46,43 +46,43 @@ const TvPage = () => {
         <div className="movie_header__info">
           <div className="movie_header__info-title">{data.name}</div>
           <div className="movie_header__info-categories">
-            <span className="movie_header__info-subtitle">Категорія:</span>{' '}
+            <span className="movie_header__info-subtitle">Категорія:</span>{" "}
             {data.genres &&
               data.genres.map((arr) => {
                 return (
                   <span className="movie_header__info-categories-type">
-                    {arr.name + ',  '}
+                    {arr.name + ",  "}
                   </span>
                 );
               })}
           </div>
           <div className="movie_header__info-date">
-            <span className="movie_header__info-subtitle">Дата виходу:</span>{' '}
+            <span className="movie_header__info-subtitle">Дата виходу:</span>{" "}
             {data.first_air_date}
           </div>
 
           <div className="movie_header__info-seasons">
             <span className="movie_header__info-subtitle">
               Кількість сезонів:
-            </span>{' '}
+            </span>{" "}
             {data.number_of_seasons}
           </div>
           <div className="movie_header__info-episodes">
             <span className="movie_header__info-subtitle">
               Кількість епізодів:
-            </span>{' '}
+            </span>{" "}
             {data.number_of_episodes}
           </div>
           <div className="movie_header__info-vote">
-            <span className="movie_header__info-subtitle">Рейтинг:</span>{' '}
+            <span className="movie_header__info-subtitle">Рейтинг:</span>{" "}
             {data.vote_average}/10
           </div>
           <div className="movie_header__info-runtime">
             <span className="movie_header__info-subtitle">
               Час кожного з епізодів:
-            </span>{' '}
+            </span>{" "}
             {data.episode_run_time &&
-              data.episode_run_time.map((data) => data + 'хв, ')}
+              data.episode_run_time.map((data) => data + "хв, ")}
           </div>
           <div className="movie_header__info-overview">{data.overview}</div>
         </div>
@@ -90,7 +90,7 @@ const TvPage = () => {
       {console.log(video)}
       {video.results &&
         video.results.map((data, index) => {
-          return data.type === 'Trailer' ? (
+          return data.type === "Trailer" ? (
             <div className="trailer">
               <div className="trailer-name">{data.name}</div>
               <iframe
@@ -114,7 +114,7 @@ const TvPage = () => {
               ></iframe>
             </div>
           ) : (
-            ''
+            ""
           );
         })}
 
@@ -122,7 +122,7 @@ const TvPage = () => {
       <div className="movie_actors">
         {actors &&
           actors.map((data, index) => {
-            return index <= 7 ? <Actors key={data.id} data={data} /> : '';
+            return index <= 7 ? <Actors key={data.id} data={data} /> : "";
           })}
       </div>
     </div>
