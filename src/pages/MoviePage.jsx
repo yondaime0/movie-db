@@ -3,11 +3,13 @@ import axios from 'axios';
 
 import { useParams } from 'react-router-dom';
 import Actors from '../components/Actors';
+import Trailer from '../components/Trailer';
 
 const MoviePage = () => {
   const [data, setData] = React.useState([]);
   const [actors, setActors] = React.useState([]);
   const [video, setVideo] = React.useState([]);
+
   const { id } = useParams();
 
   React.useEffect(() => {
@@ -31,6 +33,7 @@ const MoviePage = () => {
       )
       .then(({ data }) => setActors(data.cast));
   }, [id]);
+
   return (
     <div className="movie_wrapper">
       <div className="movie_header">
@@ -53,9 +56,12 @@ const MoviePage = () => {
           <div className="movie_header__info-categories">
             Категорія:{' '}
             {data.genres &&
-              data.genres.map((arr) => {
+              data.genres.map((arr, index) => {
                 return (
-                  <span className="movie_header__info-categories-type">
+                  <span
+                    key={`${arr.name}_${index}`}
+                    className="movie_header__info-categories-type"
+                  >
                     {arr.name + ',  '}
                   </span>
                 );
@@ -83,26 +89,7 @@ const MoviePage = () => {
       {video.results &&
         video.results.map((data, index) => {
           return data.type === 'Trailer' ? (
-            <div className="trailer">
-              <div className="trailer-name">{data.name}</div>
-              <iframe
-                className="trailer-video"
-                src={`https://www.youtube.com/embed/${data.key}`}
-                srcdoc={`<style>*{padding:0;margin:0;overflow:hidden}
-    html,body{height:100%}
-    img,span{position:absolute;width:100%;top:0;bottom:0;margin:auto}
-    span{height:1.5em;text-align:center;font:48px/1.5 sans-serif;color:white;text-shadow:0 0 0.5em black}
-    </style>
-    <a href=https://www.youtube.com/embed/${data.key}?autoplay=1>
-    <img src=https://img.youtube.com/vi/${data.key}/hqdefault.jpg alt='Demo video'>
-    <span>▶</span>
-    </a>`}
-                title="YouTube video player"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen="true"
-              ></iframe>
-            </div>
+            <Trailer key={`${data.name}_${index}`} data={data} />
           ) : (
             ''
           );
@@ -112,7 +99,11 @@ const MoviePage = () => {
       <div className="movie_actors">
         {actors &&
           actors.map((data, index) => {
-            return index <= 7 ? <Actors key={data.id} data={data} /> : '';
+            return index <= 7 ? (
+              <Actors key={`${data.id}_${index}`} data={data} />
+            ) : (
+              ''
+            );
           })}
       </div>
     </div>

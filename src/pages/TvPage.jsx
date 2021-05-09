@@ -1,7 +1,8 @@
-import React from "react";
-import axios from "axios";
-import Actors from "../components/Actors";
-import { useParams } from "react-router-dom";
+import React from 'react';
+import axios from 'axios';
+import Actors from '../components/Actors';
+import { useParams } from 'react-router-dom';
+import Trailer from '../components/Trailer';
 
 const TvPage = () => {
   const [data, setData] = React.useState([]);
@@ -38,7 +39,7 @@ const TvPage = () => {
             src={
               data.poster_path
                 ? `https://image.tmdb.org/t/p/w500/${data.poster_path}`
-                : ""
+                : ''
             }
             alt="poster_img"
           />
@@ -46,75 +47,57 @@ const TvPage = () => {
         <div className="movie_header__info">
           <div className="movie_header__info-title">{data.name}</div>
           <div className="movie_header__info-categories">
-            <span className="movie_header__info-subtitle">Категорія:</span>{" "}
+            <span className="movie_header__info-subtitle">Категорія:</span>{' '}
             {data.genres &&
-              data.genres.map((arr) => {
+              data.genres.map((arr, index) => {
                 return (
-                  <span className="movie_header__info-categories-type">
-                    {arr.name + ",  "}
+                  <span
+                    key={`${arr.name}_${index}`}
+                    className="movie_header__info-categories-type"
+                  >
+                    {arr.name + ',  '}
                   </span>
                 );
               })}
           </div>
           <div className="movie_header__info-date">
-            <span className="movie_header__info-subtitle">Дата виходу:</span>{" "}
+            <span className="movie_header__info-subtitle">Дата виходу:</span>{' '}
             {data.first_air_date}
           </div>
 
           <div className="movie_header__info-seasons">
             <span className="movie_header__info-subtitle">
               Кількість сезонів:
-            </span>{" "}
+            </span>{' '}
             {data.number_of_seasons}
           </div>
           <div className="movie_header__info-episodes">
             <span className="movie_header__info-subtitle">
               Кількість епізодів:
-            </span>{" "}
+            </span>{' '}
             {data.number_of_episodes}
           </div>
           <div className="movie_header__info-vote">
-            <span className="movie_header__info-subtitle">Рейтинг:</span>{" "}
+            <span className="movie_header__info-subtitle">Рейтинг:</span>{' '}
             {data.vote_average}/10
           </div>
           <div className="movie_header__info-runtime">
             <span className="movie_header__info-subtitle">
               Час кожного з епізодів:
-            </span>{" "}
+            </span>{' '}
             {data.episode_run_time &&
-              data.episode_run_time.map((data) => data + "хв, ")}
+              data.episode_run_time.map((data) => data + 'хв, ')}
           </div>
           <div className="movie_header__info-overview">{data.overview}</div>
         </div>
       </div>
-      {console.log(video)}
+
       {video.results &&
         video.results.map((data, index) => {
-          return data.type === "Trailer" ? (
-            <div className="trailer">
-              <div className="trailer-name">{data.name}</div>
-              <iframe
-                className="trailer-video"
-                width="680"
-                height="450"
-                src={`https://www.youtube.com/embed/${data.key}`}
-                srcdoc={`<style>*{padding:0;margin:0;overflow:hidden}
-                            html,body{height:100%}
-                            img,span{position:absolute;width:100%;top:0;bottom:0;margin:auto}
-                            span{height:1.5em;text-align:center;font:48px/1.5 sans-serif;color:white;text-shadow:0 0 0.5em black}
-                          </style>
-                          <a href=https://www.youtube.com/embed/${data.key}?autoplay=1>
-                            <img src=https://img.youtube.com/vi/${data.key}/hqdefault.jpg alt='Demo video'>
-                            <span>▶</span>
-                          </a>`}
-                title="YouTube video player"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen="true"
-              ></iframe>
-            </div>
+          return data.type === 'Trailer' ? (
+            <Trailer key={`${data.name}_${index}`} data={data} />
           ) : (
-            ""
+            ''
           );
         })}
 
@@ -122,7 +105,7 @@ const TvPage = () => {
       <div className="movie_actors">
         {actors &&
           actors.map((data, index) => {
-            return index <= 7 ? <Actors key={data.id} data={data} /> : "";
+            return index <= 7 ? <Actors key={data.id} data={data} /> : '';
           })}
       </div>
     </div>
