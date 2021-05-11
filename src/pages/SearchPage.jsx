@@ -1,16 +1,18 @@
-import React from 'react';
-import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import React from "react";
+import axios from "axios";
+import { useParams } from "react-router-dom";
 
-import ItemBlock from '../components/ItemBlock';
+import ItemBlock from "../components/ItemBlock";
 
 const SearchPage = () => {
   const { value } = useParams();
+  const [isLoaded, setIsLoaded] = React.useState(false);
+
   const [searchTv, setSearchTv] = React.useState([]);
   const [searchMovie, setSearchMovie] = React.useState([]);
   const [activeCategory, setActiveCategory] = React.useState(0);
 
-  const categoryNames = ['Фільми', 'Серіали'];
+  const categoryNames = ["Фільми", "Серіали"];
 
   React.useEffect(() => {
     axios
@@ -19,6 +21,7 @@ const SearchPage = () => {
       )
       .then(({ data }) => {
         setSearchMovie(data);
+        setIsLoaded(true);
       });
 
     axios
@@ -27,6 +30,7 @@ const SearchPage = () => {
       )
       .then(({ data }) => {
         setSearchTv(data);
+        setIsLoaded(true);
       });
   }, [value]);
 
@@ -40,13 +44,13 @@ const SearchPage = () => {
                 return (
                   <li
                     className={`category-list__item  ${
-                      activeCategory === index ? 'active' : ''
+                      activeCategory === index ? "active" : ""
                     }`}
                     onClick={() => setActiveCategory(index)}
                     key={`${name}_${index}`}
                   >
                     {name}
-                    {''}
+                    {""}
                     {activeCategory === index ? (
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -60,7 +64,7 @@ const SearchPage = () => {
                         <circle cx="12" cy="12" r="5" />
                       </svg>
                     ) : (
-                      ''
+                      ""
                     )}
                   </li>
                 );
@@ -70,11 +74,12 @@ const SearchPage = () => {
       </div>
       <div className="block-wrapper">
         <h2>
-          Результати пошуку {activeCategory === 0 ? 'фільмів' : 'серіалів'} за
+          Результати пошуку {activeCategory === 0 ? "фільмів" : "серіалів"} за
           запитом {value}:
         </h2>
 
         <ItemBlock
+          isLoaded={isLoaded}
           category={activeCategory}
           itemsMovies={searchMovie.results}
           itemsTv={searchTv.results}

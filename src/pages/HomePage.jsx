@@ -1,24 +1,25 @@
-import ItemBlock from '../components/ItemBlock';
-import Categories from '../components/Categories';
-import { useSelector, useDispatch } from 'react-redux';
+import ItemBlock from "../components/ItemBlock";
+import Categories from "../components/Categories";
+import { useSelector, useDispatch } from "react-redux";
 import {
   setCategory,
   setSort,
   setPageIncrement,
   setPageDecrement,
-} from '../redux/actions/filters';
-import { fetchItems } from '../redux/actions/items';
-import React from 'react';
-import Sort from '../components/Sort';
+} from "../redux/actions/filters";
+import { fetchItems } from "../redux/actions/items";
+import React from "react";
+import Sort from "../components/Sort";
 
-const categoryNames = ['Фільми', 'Серіали'];
+const categoryNames = ["Фільми", "Серіали"];
 const sortItems = [
-  { name: 'популярності', type: 'popular' },
-  { name: 'рейтингу', type: 'top_rated' },
+  { name: "популярності", type: "popular" },
+  { name: "рейтингу", type: "top_rated" },
 ];
 
 const HomePage = () => {
   const dispatch = useDispatch();
+  const isLoaded = useSelector(({ items }) => items.isLoaded);
   const movies = useSelector(({ items }) => items.movies);
   const tv = useSelector(({ items }) => items.tv);
   const { category, sort, page } = useSelector(({ filters }) => filters);
@@ -65,9 +66,10 @@ const HomePage = () => {
       </div>
 
       <div className="block-wrapper">
-        <h2>{category === 0 ? 'Фільми' : 'Серіали'}</h2>
+        <h2>{category === 0 ? "Фільми" : "Серіали"}</h2>
 
         <ItemBlock
+          isLoaded={isLoaded}
           category={category}
           itemsMovies={movies.results}
           itemsTv={tv.results}

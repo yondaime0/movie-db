@@ -1,13 +1,19 @@
-import React from 'react';
-import axios from 'axios';
-import Actors from '../components/Actors';
-import { useParams } from 'react-router-dom';
-import Trailer from '../components/Trailer';
+import React from "react";
+import axios from "axios";
+import Actors from "../components/Actors";
+import { useParams } from "react-router-dom";
+import Trailer from "../components/Trailer";
+import Skeleton from "react-loading-skeleton";
 
 const TvPage = () => {
   const [data, setData] = React.useState([]);
   const [video, setVideo] = React.useState([]);
   const [actors, setActors] = React.useState([]);
+
+  const [posterIsLoaded, setPosterIsLoaded] = React.useState(false);
+
+  const [actorsIsLoaded, setActorsIsloaded] = React.useState(false);
+
   const { id } = useParams();
 
   React.useEffect(() => {
@@ -27,7 +33,10 @@ const TvPage = () => {
       .get(
         `https://api.themoviedb.org/3/tv/${id}/credits?api_key=ccc9a4bc732f366b3a0a8622dd0ecc77&language=uk`
       )
-      .then(({ data }) => setActors(data.cast));
+      .then(({ data }) => {
+        setActors(data.cast);
+        setActorsIsloaded(true);
+      });
   }, [id]);
 
   return (
@@ -35,19 +44,30 @@ const TvPage = () => {
       <div className="movie_header">
         <div className="movie_header__poster">
           <img
-            className="movie_header__poster-img"
+            className={`movie_header__poster-img ${
+              !posterIsLoaded ? "hidden" : ""
+            }`}
             src={
-              data.poster_path
-                ? `https://image.tmdb.org/t/p/w500/${data.poster_path}`
-                : ''
+              data.poster_path &&
+              `https://image.tmdb.org/t/p/w500/${data.poster_path}`
             }
+            onLoad={() => {
+              setPosterIsLoaded(true);
+            }}
             alt="poster_img"
+          />
+          <Skeleton
+            className={`movie_header__poster-img ${
+              posterIsLoaded ? "hidden" : ""
+            }`}
+            width={260}
+            height={390}
           />
         </div>
         <div className="movie_header__info">
           <div className="movie_header__info-title">{data.name}</div>
           <div className="movie_header__info-categories">
-            <span className="movie_header__info-subtitle">Категорія:</span>{' '}
+            <span className="movie_header__info-subtitle">Категорія:</span>{" "}
             {data.genres &&
               data.genres.map((arr, index) => {
                 return (
@@ -55,38 +75,38 @@ const TvPage = () => {
                     key={`${arr.name}_${index}`}
                     className="movie_header__info-categories-type"
                   >
-                    {arr.name + ',  '}
+                    {arr.name + ",  "}
                   </span>
                 );
               })}
           </div>
           <div className="movie_header__info-date">
-            <span className="movie_header__info-subtitle">Дата виходу:</span>{' '}
+            <span className="movie_header__info-subtitle">Дата виходу:</span>{" "}
             {data.first_air_date}
           </div>
 
           <div className="movie_header__info-seasons">
             <span className="movie_header__info-subtitle">
               Кількість сезонів:
-            </span>{' '}
+            </span>{" "}
             {data.number_of_seasons}
           </div>
           <div className="movie_header__info-episodes">
             <span className="movie_header__info-subtitle">
               Кількість епізодів:
-            </span>{' '}
+            </span>{" "}
             {data.number_of_episodes}
           </div>
           <div className="movie_header__info-vote">
-            <span className="movie_header__info-subtitle">Рейтинг:</span>{' '}
+            <span className="movie_header__info-subtitle">Рейтинг:</span>{" "}
             {data.vote_average}/10
           </div>
           <div className="movie_header__info-runtime">
             <span className="movie_header__info-subtitle">
               Час кожного з епізодів:
-            </span>{' '}
+            </span>{" "}
             {data.episode_run_time &&
-              data.episode_run_time.map((data) => data + 'хв, ')}
+              data.episode_run_time.map((data) => data + "хв, ")}
           </div>
           <div className="movie_header__info-overview">{data.overview}</div>
         </div>
@@ -94,19 +114,29 @@ const TvPage = () => {
 
       {video.results &&
         video.results.map((data, index) => {
-          return data.type === 'Trailer' ? (
+          return data.type === "Trailer" ? (
             <Trailer key={`${data.name}_${index}`} data={data} />
           ) : (
-            ''
+            ""
           );
         })}
 
       <div className="movie_actors-title">Список акторів:</div>
       <div className="movie_actors">
-        {actors &&
-          actors.map((data, index) => {
-            return index <= 7 ? <Actors key={data.id} data={data} /> : '';
-          })}
+        {actorsIsLoaded
+          ? actors &&
+            actors.map((data, index) => {
+              return index <= 7 ? (
+                <Actors key={`${data.id}_${index}`} data={data} />
+              ) : (
+                ""
+              );
+            })
+          : Array(8)
+              .fill(0)
+              .map((_, index) => (
+                <Actors key={`${_}_${index}`} data={{ profile_path: false }} />
+              ))}
       </div>
     </div>
   );

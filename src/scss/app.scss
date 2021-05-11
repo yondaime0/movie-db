@@ -1,8 +1,8 @@
-@import 'fonts';
-@import 'variables';
-@import 'libs/normalize';
+@import "fonts";
+@import "variables";
+@import "libs/normalize";
 
-@import 'components/all';
+@import "components/all";
 
 body {
   @media (prefers-color-scheme: dark) {
@@ -67,6 +67,10 @@ h2 {
       margin-bottom: 30px;
       @media (min-width: 768px) {
         margin-bottom: 0px;
+      }
+
+      &.hidden {
+        display: none;
       }
     }
   }
