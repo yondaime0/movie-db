@@ -182,9 +182,15 @@ h2 {
     }
   }
 }
+.scrollmenu_trailer {
+  overflow: auto;
+  white-space: nowrap;
+}
 
 .trailer {
+  display: inline-block;
   padding: 20px;
+
   @media (min-width: 768px) {
     padding: 30px;
   }
@@ -192,12 +198,16 @@ h2 {
     width: 300px;
     height: 200px;
     @media (min-width: 768px) {
-      width: 680px;
-      height: 440px;
+      width: 400px;
+      height: 250px;
     }
   }
   &-name {
-    font-size: 20px;
-    margin-bottom: 20px;
+    font-size: 16px;
+    @media (min-width: 768px) {
+      font-size: 18px;
+    }
+
+    margin-top: 20px;
   }
 }

@@ -7,9 +7,11 @@
   margin-right: 20px;
   margin-top: 20px;
   justify-content: space-around;
+
   &-title {
     font-size: 22px;
     margin-left: 30px;
+    margin-top: 30px;
   }
 }
 
@@ -17,6 +19,7 @@
   margin-bottom: 30px;
   border-radius: 14px;
   width: 120px;
+  height: min-content;
 
   overflow: hidden;
 
@@ -48,6 +51,6 @@
     @media (prefers-color-scheme: light) {
       color: rgb(70, 70, 70);
     }
-    padding-bottom: 5px;
+    padding-bottom: 10px;
   }
 }

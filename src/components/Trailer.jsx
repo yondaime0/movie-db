@@ -3,7 +3,6 @@ import React from "react";
 const Trailer = ({ data }) => {
   return (
     <div className="trailer">
-      <div className="trailer-name">{data.name}</div>
       <iframe
         className="trailer-video"
         src={`https://www.youtube.com/embed/${data.key}`}
@@ -20,6 +19,7 @@ const Trailer = ({ data }) => {
         frameBorder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
       ></iframe>
+      <div className="trailer-name">{data.name}</div>
     </div>
   );
 };

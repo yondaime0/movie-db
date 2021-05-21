@@ -11,7 +11,6 @@ const MoviePage = () => {
   const [actors, setActors] = React.useState([]);
   const [video, setVideo] = React.useState([]);
   const [posterIsLoaded, setPosterIsLoaded] = React.useState(false);
-
   const [actorsIsLoaded, setActorsIsloaded] = React.useState(false);
 
   const { id } = useParams();
@@ -104,14 +103,14 @@ const MoviePage = () => {
         </div>
       </div>
 
-      {video.results &&
-        video.results.map((data, index) => {
-          return data.type === "Trailer" ? (
-            <Trailer key={`${data.name}_${index}`} data={data} />
-          ) : (
-            ""
-          );
-        })}
+      {
+        <div className="scrollmenu_trailer">
+          {video.results &&
+            video.results.map((data, index) => {
+              return <Trailer key={`${data.name}_${index}`} data={data} />;
+            })}
+        </div>
+      }
 
       <div className="movie_actors-title">Список акторів:</div>
       <div className="movie_actors">
