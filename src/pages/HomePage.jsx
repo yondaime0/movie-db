@@ -25,6 +25,7 @@ const HomePage = () => {
   const { category, sort, page } = useSelector(({ filters }) => filters);
 
   React.useEffect(() => {
+    window.scrollTo(0, 0);
     dispatch(fetchItems(category, sort, page));
   }, [category, sort, page, dispatch]);
 

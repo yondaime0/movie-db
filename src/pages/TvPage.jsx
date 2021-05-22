@@ -14,6 +14,7 @@ const TvPage = () => {
   const { id } = useParams();
 
   React.useEffect(() => {
+    window.scrollTo(0, 0);
     axios
       .get(
         `https://api.themoviedb.org/3/tv/${id}?api_key=ccc9a4bc732f366b3a0a8622dd0ecc77&language=uk`
