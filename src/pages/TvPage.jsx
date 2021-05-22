@@ -10,8 +10,7 @@ const TvPage = () => {
   const [video, setVideo] = React.useState([]);
   const [actors, setActors] = React.useState([]);
   const [posterIsLoaded, setPosterIsLoaded] = React.useState(false);
-  const [actorsIsLoaded, setActorsIsloaded] = React.useState(false);
-
+  const [actorsIsLoaded, setActorsIsLoaded] = React.useState(false);
   const { id } = useParams();
 
   React.useEffect(() => {
@@ -20,7 +19,6 @@ const TvPage = () => {
         `https://api.themoviedb.org/3/tv/${id}?api_key=ccc9a4bc732f366b3a0a8622dd0ecc77&language=uk`
       )
       .then(({ data }) => setData(data));
-
     axios
       .get(
         `https://api.themoviedb.org/3/tv/${id}/videos?api_key=ccc9a4bc732f366b3a0a8622dd0ecc77&language=ru`
@@ -33,7 +31,7 @@ const TvPage = () => {
       )
       .then(({ data }) => {
         setActors(data.cast);
-        setActorsIsloaded(true);
+        setActorsIsLoaded(true);
       });
   }, [id]);
 

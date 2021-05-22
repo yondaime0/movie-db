@@ -11,8 +11,7 @@ const MoviePage = () => {
   const [actors, setActors] = React.useState([]);
   const [video, setVideo] = React.useState([]);
   const [posterIsLoaded, setPosterIsLoaded] = React.useState(false);
-  const [actorsIsLoaded, setActorsIsloaded] = React.useState(false);
-
+  const [actorsIsLoaded, setActorsIsLoaded] = React.useState(false);
   const { id } = useParams();
 
   React.useEffect(() => {
@@ -36,7 +35,7 @@ const MoviePage = () => {
       )
       .then(({ data }) => {
         setActors(data.cast);
-        setActorsIsloaded(true);
+        setActorsIsLoaded(true);
       });
   }, [id]);
 

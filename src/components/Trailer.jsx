@@ -17,7 +17,8 @@ const Trailer = ({ data }) => {
     </a>`}
         title="YouTube video player"
         frameBorder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture;"
+        allowFullScreen="true"
       ></iframe>
       <div className="trailer-name">{data.name}</div>
     </div>
