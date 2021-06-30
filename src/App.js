@@ -6,7 +6,6 @@ import MoviePage from "./pages/MoviePage";
 import TvPage from "./pages/TvPage";
 import SearchPage from "./pages/SearchPage";
 
-
 const App = () => {
   return (
     <div className="wrapper">

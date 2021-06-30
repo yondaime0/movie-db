@@ -37,11 +37,11 @@ const TvPage = () => {
   }, [id]);
 
   return (
-    <div className="movie_wrapper">
-      <div className="movie_header">
-        <div className="movie_header__poster">
+    <div className="movie-wrapper">
+      <div className="movie-header">
+        <div className="movie-header-poster">
           <img
-            className={`movie_header__poster-img ${
+            className={`movie-header-poster-img ${
               !posterIsLoaded ? "hidden" : ""
             }`}
             src={
@@ -54,62 +54,62 @@ const TvPage = () => {
             alt="poster_img"
           />
           <Skeleton
-            className={`movie_header__poster-img ${
+            className={`movie-header-poster-img ${
               posterIsLoaded ? "hidden" : ""
             }`}
             width={260}
             height={390}
           />
         </div>
-        <div className="movie_header__info">
-          <div className="movie_header__info-title">{data.name}</div>
-          <div className="movie_header__info-categories">
-            <span className="movie_header__info-subtitle">Категорія:</span>{" "}
+        <div className="movie-header-info">
+          <div className="movie-header-info-title">{data.name}</div>
+          <div className="movie-header-info-categories">
+            <span className="movie-header-info-subtitle">Категорія:</span>{" "}
             {data.genres &&
               data.genres.map((arr, index) => {
                 return (
                   <span
                     key={`${arr.name}_${index}`}
-                    className="movie_header__info-categories-type"
+                    className="movie-header-info-categories-type"
                   >
                     {arr.name + ",  "}
                   </span>
                 );
               })}
           </div>
-          <div className="movie_header__info-date">
-            <span className="movie_header__info-subtitle">Дата виходу:</span>{" "}
+          <div className="movie-header-info-date">
+            <span className="movie-header-info-subtitle">Дата виходу:</span>{" "}
             {data.first_air_date}
           </div>
-
-          <div className="movie_header__info-seasons">
-            <span className="movie_header__info-subtitle">
+          -
+          <div className="movie-header-info-seasons">
+            <span className="movie-header-info-subtitle">
               Кількість сезонів:
             </span>{" "}
             {data.number_of_seasons}
           </div>
-          <div className="movie_header__info-episodes">
-            <span className="movie_header__info-subtitle">
+          <div className="movie-header-info-episodes">
+            <span className="movie-header-info-subtitle">
               Кількість епізодів:
             </span>{" "}
             {data.number_of_episodes}
           </div>
-          <div className="movie_header__info-vote">
-            <span className="movie_header__info-subtitle">Рейтинг:</span>{" "}
+          <div className="movie-header-info-vote">
+            <span className="movie-header-info-subtitle">Рейтинг:</span>{" "}
             {data.vote_average}/10
           </div>
-          <div className="movie_header__info-runtime">
-            <span className="movie_header__info-subtitle">
+          <div className="movie-header-info-runtime">
+            <span className="movie-header-info-subtitle">
               Час кожного з епізодів:
             </span>{" "}
             {data.episode_run_time &&
               data.episode_run_time.map((data) => data + "хв, ")}
           </div>
-          <div className="movie_header__info-overview">{data.overview}</div>
+          <div className="movie-header-info-overview">{data.overview}</div>
         </div>
       </div>
       {video.results && (
-        <div className="scrollmenu_trailer">
+        <div className="scrollmenu-trailer">
           {video.results &&
             video.results.map((data, index) => {
               return <Trailer key={`${data.name}_${index}`} data={data} />;
@@ -117,8 +117,8 @@ const TvPage = () => {
         </div>
       )}
 
-      <div className="movie_actors-title">Список акторів:</div>
-      <div className="movie_actors">
+      <div className="movie-actors-title">Список акторів:</div>
+      <div className="movie-actors">
         {actorsIsLoaded
           ? actors &&
             actors.map((data, index) => {

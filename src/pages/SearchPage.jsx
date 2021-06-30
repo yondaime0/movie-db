@@ -7,7 +7,6 @@ import ItemBlock from "../components/ItemBlock";
 const SearchPage = () => {
   const { value } = useParams();
   const [isLoaded, setIsLoaded] = React.useState(false);
-
   const [searchTv, setSearchTv] = React.useState([]);
   const [searchMovie, setSearchMovie] = React.useState([]);
   const [activeCategory, setActiveCategory] = React.useState(0);

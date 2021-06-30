@@ -41,11 +41,11 @@ const MoviePage = () => {
   }, [id]);
 
   return (
-    <div className="movie_wrapper">
-      <div className="movie_header">
-        <div className="movie_header__poster">
+    <div className="movie-wrapper">
+      <div className="movie-header">
+        <div className="movie-header-poster">
           <img
-            className={`movie_header__poster-img ${
+            className={`movie-header-poster-img ${
               !posterIsLoaded ? "hidden" : ""
             }`}
             src={
@@ -58,53 +58,53 @@ const MoviePage = () => {
             alt="poster_img"
           />
           <Skeleton
-            className={`movie_header__poster-img ${
+            className={`movie-header-poster-img ${
               posterIsLoaded ? "hidden" : ""
             }`}
             width={260}
             height={390}
           />
         </div>
-        <div className="movie_header__info">
-          <div className="movie_header__info-title-block">
-            <h1 className="movie_header__info-title">{data.title}</h1>
+        <div className="movie-header-info">
+          <div className="movie-header-info-title-block">
+            <h1 className="movie-header-info-title">{data.title}</h1>
           </div>
-          <div className="movie_header__info-tagline">{data.tagline}</div>
-          <div className="movie_header__info-categories">
+          <div className="movie-header-info-tagline">{data.tagline}</div>
+          <div className="movie-header-info-categories">
             Категорія:{" "}
             {data.genres &&
               data.genres.map((arr, index) => {
                 return (
                   <span
                     key={`${arr.name}_${index}`}
-                    className="movie_header__info-categories-type"
+                    className="movie-header-info-categories-type"
                   >
                     {arr.name + ",  "}
                   </span>
                 );
               })}
           </div>
-          <div className="movie_header__info-date">
+          <div className="movie-header-info-date">
             Дата виходу: {data.release_date}
           </div>
-          <div className="movie_header__info-budget">
+          <div className="movie-header-info-budget">
             Бюджет: {data.budget === 0 ? "невідомо" : data.budget + "$"}
           </div>
-          <div className="movie_header__info-revenue">
+          <div className="movie-header-info-revenue">
             Зібрав: {data.revenue === 0 ? "невідомо" : data.revenue + "$"}
           </div>
-          <div className="movie_header__info-vote">
+          <div className="movie-header-info-vote">
             Рейтинг: {data.vote_average}/10
           </div>
-          <div className="movie_header__info-runtime">
+          <div className="movie-header-info-runtime">
             Час: {data.runtime}хв.
           </div>
-          <div className="movie_header__info-overview">{data.overview}</div>
+          <div className="movie-header-info-overview">{data.overview}</div>
         </div>
       </div>
 
       {
-        <div className="scrollmenu_trailer">
+        <div className="scrollmenu-trailer">
           {video.results &&
             video.results.map((data, index) => {
               return <Trailer key={`${data.name}_${index}`} data={data} />;
@@ -112,8 +112,8 @@ const MoviePage = () => {
         </div>
       }
 
-      <div className="movie_actors-title">Список акторів:</div>
-      <div className="movie_actors">
+      <div className="movie-actors-title">Список акторів:</div>
+      <div className="movie-actors">
         {actorsIsLoaded
           ? actors &&
             actors.map((data, index) => {
