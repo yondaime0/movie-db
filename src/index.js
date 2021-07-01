@@ -13,7 +13,6 @@ ReactDOM.render(
       <App />
     </Provider>
   </Router>,
-
   document.getElementById("root")
 );
 

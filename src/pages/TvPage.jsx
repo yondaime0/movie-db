@@ -25,7 +25,6 @@ const TvPage = () => {
         `https://api.themoviedb.org/3/tv/${id}/videos?api_key=ccc9a4bc732f366b3a0a8622dd0ecc77&language=ru`
       )
       .then(({ data }) => setVideo(data));
-
     axios
       .get(
         `https://api.themoviedb.org/3/tv/${id}/credits?api_key=ccc9a4bc732f366b3a0a8622dd0ecc77&language=uk`
