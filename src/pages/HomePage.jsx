@@ -29,28 +29,21 @@ const HomePage = () => {
     dispatch(fetchItems(category, sort, page));
   }, [category, sort, page, dispatch]);
 
-  const onSelectCategory = React.useCallback(
-    (index) => {
-      dispatch(setCategory(index));
-    },
-    [dispatch]
-  );
+  const onSelectCategory = (index) => {
+    dispatch(setCategory(index));
+  };
 
-  const onSelectSortType = React.useCallback(
-    (type) => {
-      dispatch(setSort(type));
-    },
-    [dispatch]
-  );
+  const onSelectSortType = (type) => {
+    dispatch(setSort(type));
+  };
 
-  const onSelectPageIncrement = React.useCallback(() => {
+  const onSelectPageIncrement = () => {
     dispatch(setPageIncrement());
-  }, [dispatch]);
+  };
 
-  const onSelectPageDecrement = React.useCallback(() => {
+  const onSelectPageDecrement = () => {
     dispatch(setPageDecrement());
-  }, [dispatch]);
-
+  };
   return (
     <div className="content">
       <div>

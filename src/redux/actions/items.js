@@ -6,10 +6,7 @@ export const setLoaded = (payload) => ({
 });
 
 export const fetchItems = (category, sort, page) => (dispatch) => {
-  dispatch({
-    type: "SET_LOADED",
-    payload: false,
-  });
+  dispatch(setLoaded(false));
 
   axios
     .get(
